@@ -1,7 +1,11 @@
 package deliveryCompany.data.repositories;
 
-import deliveryCompany.data.models.TrackingInfo;
+import deliveryCompany.data.models.TrackingInfos;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface TrackingInfosRepo extends MongoRepository<TrackingInfo, String> {
+import java.util.Optional;
+
+public interface TrackingInfosRepo extends MongoRepository<TrackingInfos, String> {
+
+    Optional<TrackingInfos> findByPackageId(String id);
 }

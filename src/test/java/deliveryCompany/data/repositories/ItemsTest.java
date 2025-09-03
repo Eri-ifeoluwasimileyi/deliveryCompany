@@ -15,6 +15,7 @@ public class ItemsTest {
 
     @Test
     public void saveItemTest() {
+        items.deleteAll();
         items.save(new Item());
         assertEquals(1, items.count());
     }
