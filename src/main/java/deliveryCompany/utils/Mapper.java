@@ -14,7 +14,7 @@ public class Mapper {
         item.setReceiverName(sendItemRequest.getReceiverName());
         item.setPhoneNumber( sendItemRequest.getPhoneNumber());
         item.setWeightInGrammes(sendItemRequest.getWeightInGrammes());
-        return new Item();
+        return item;
     }
 
     public static SendItemResponse convertToSendItemResponse(Item item) {
@@ -25,8 +25,8 @@ public class Mapper {
         sendItemResponse.setSenderName(item.getSenderName());
         sendItemResponse.setPhoneNumber(item.getPhoneNumber());
         sendItemResponse.setWeightInGrammes(item.getWeightInGrammes());
-        sendItemResponse.setDateSent(DateTimeFormatter.ofPattern("EEE, dd MM yyyy, hh:mm:ss a"));
+        sendItemResponse.setDateSent(DateTimeFormatter.ofPattern("EEE, dd MM, yyyy, hh:mm:ss a"));
 
-        return new SendItemResponse();
+        return sendItemResponse;
     }
 }

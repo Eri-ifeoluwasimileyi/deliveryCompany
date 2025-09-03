@@ -19,6 +19,7 @@ import static deliveryCompany.utils.Mapper.convertToItem;
 import static deliveryCompany.utils.Mapper.convertToSendItemResponse;
 
 @Service
+@Slf4j
 public class ItemServiceImpl implements ItemService {
     @Autowired
     private Items items;
@@ -37,6 +38,7 @@ public class ItemServiceImpl implements ItemService {
     private void addTrackingInfoFor(Item item, String info){
         Optional<TrackingInfos> optionalTrackingInfos = trackingInfosRepo.findByPackageId(item.getId());
         if(optionalTrackingInfos.isPresent()){
+            log.info("i reach here");
             TrackingInfo trackingInfo = new TrackingInfo();
             trackingInfo.setCreatedAt(LocalDateTime.now());
             trackingInfo.setEvent(info);
@@ -51,7 +53,7 @@ public class ItemServiceImpl implements ItemService {
             infos.getInfos().add(trackingInfo);
 
             infos.setPackageId(items.save(item).getId());
-
+            log.info("Id is {}", item.getId());
             item.setTrackingInfos(trackingInfosRepo.save(infos));
             items.save(item);
 

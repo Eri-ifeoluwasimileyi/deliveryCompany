@@ -27,6 +27,7 @@ public class ItemServiceImplTest {
     @BeforeEach
     public void setUp() {
         items.deleteAll();
+        trackingInfosRepo.deleteAll();
     }
 
     @Test
